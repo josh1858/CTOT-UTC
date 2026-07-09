@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#01295C">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="CTOT UTC">
+<title>CTOT Pushback UTC</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<main class="shell">
+<header class="brand">
+  <div class="speedmark" aria-hidden="true"><span></span></div>
+  <div class="brand-copy">
+    <div class="brand-main">BA Euroflyer</div>
+    <div class="brand-sub">CTOT / TSAT Pushback Calculator · UTC</div>
+  </div>
+</header>
+
+<section class="utc-clock-panel" aria-label="Current UTC time">
+  <div>
+    <span class="label">Current UTC</span>
+    <strong id="utcClock">--:--:--</strong>
+  </div>
+  <div class="utc-date" id="utcDate">UTC date</div>
+</section>
+
+<section class="panel input-panel">
+  <label class="field"><span>CTOT (UTC)</span><input id="ctot" inputmode="numeric" autocomplete="off" placeholder="1430 or 14:30"><small>Calculated with CTOT -5 / +10 departure window.</small></label>
+  <label class="field"><span>TSAT (UTC) <em>optional</em></span><input id="tsat" inputmode="numeric" autocomplete="off" placeholder="e.g. 1410"><small>If entered, earliest pushback cannot be before TSAT.</small></label>
+  <label class="field"><span>Taxi time</span><input id="taxi" inputmode="numeric" autocomplete="off" placeholder="e.g. 18"><small>Minutes from pushback/off-blocks to takeoff.</small></label>
+  <label class="check-row"><input id="singleEngineTaxi" type="checkbox"><span>Single Engine Taxi</span></label>
+  <label class="field" id="expectedPushRow" hidden><span>Expected pushback (UTC) <em>optional</em></span><input id="expectedPush" inputmode="numeric" autocomplete="off" placeholder="e.g. 1412"><small>Used to calculate latest engine start from expected takeoff. Leave blank to use latest CTOT takeoff.</small></label>
+  <div class="button-row"><button id="calculate" type="button">Calculate</button><button id="actualPushNow" type="button" class="secondary">NOW: Actual Push</button><button id="reset" type="button" class="secondary">Reset</button></div>
+  <div id="status" class="status" role="status" aria-live="polite">Ready · all times UTC</div>
+</section>
+
+<section class="results">
+  <article class="card countdown-card green" id="earliestCountdownCard"><span class="label">Countdown to earliest pushback</span><div id="earliestPushCountdown" class="big-countdown">--:--</div><p id="earliestPushCountdownLabel">Enter CTOT and taxi time.</p></article>
+  <article class="card countdown-card amber" id="engineCountdownCard"><span class="label">Countdown to latest engine start</span><div id="engineCountdown" class="big-countdown">--:--</div><p id="engineCountdownLabel">Tick Single Engine Taxi.</p></article>
+  <article class="card primary-card"><span class="label">Earliest pushback (UTC)</span><strong id="earliestPush">--:--</strong><p id="pushHint">Times shown in UTC.</p></article>
+  <article class="card primary-card"><span class="label">Latest pushback (UTC)</span><strong id="latestPush">--:--</strong><p>latest CTOT-compliant pushback</p></article>
+  <article class="card wide"><span class="label">Permitted takeoff window (UTC)</span><strong id="departureWindow">--:-- to --:--</strong><p id="taxiSummary">Taxi time not entered</p><p id="tsatSummary">No TSAT entered.</p><p id="actualPushSummary">Actual pushback not recorded.</p></article>
+  <article class="card wide engine" id="engineCard" hidden><span class="label">Latest engine start (UTC)</span><strong id="engineStart">--:--</strong><p id="engineBasis">Tick Single Engine Taxi to show engine timing.</p></article>
+</section>
+
+<footer>UTC-only mode. CTOT window: takeoff from CTOT −5 to CTOT +10. If TSAT is entered, earliest pushback is the later of TSAT or CTOT-based earliest pushback. Engine warm-up: 5 min before takeoff. Verify with SOP, ATC and aircraft limitations.</footer>
+</main>
+<script src="app.js" defer></script>
+</body>
+</html>

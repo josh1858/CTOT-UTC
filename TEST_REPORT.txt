@@ -1,0 +1,19 @@
+CTOT Pushback UTC PWA test report
+
+Result: ALL_TESTS_PASS
+
+Covered:
+- UTC clock formatting
+- HHMM parsing
+- HH:MM parsing
+- HH.MM parsing
+- UTC/Zulu output formatting
+- CTOT earliest pushback calculation
+- CTOT latest pushback calculation
+- TSAT constraint handling
+- Midnight rollover handling
+- Single Engine Taxi latest engine start with expected pushback
+- Single Engine Taxi latest engine start without expected pushback
+- Countdown uses UTC minutes, not local time
+- Actual Calculate button updates output fields
+- Actual Push NOW button records current UTC time

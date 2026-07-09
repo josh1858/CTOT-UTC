@@ -1,0 +1,60 @@
+:root{--ba-midnight:#01295c;--ba-blue:#075aaa;--ba-red:#eb2226;--ba-pampas:#efe9e5;--ink:#f8fbff;--muted:#b9cfed;--panel:rgba(255,255,255,.09);--panel-strong:rgba(255,255,255,.14);--line:rgba(255,255,255,.2);--shadow:0 20px 60px rgba(0,0,0,.35)}*{box-sizing:border-box}html{min-height:100%;background:var(--ba-midnight)}body{margin:0;min-height:100vh;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:radial-gradient(circle at top right,rgba(7,90,170,.8),transparent 36rem),linear-gradient(145deg,#011b40 0%,var(--ba-midnight) 55%,#000b1b 100%)}.shell{width:min(720px,100%);margin:0 auto;padding:max(18px,env(safe-area-inset-top)) 16px max(22px,env(safe-area-inset-bottom))}.brand{display:flex;align-items:center;gap:14px;padding:16px 4px 22px}.speedmark{width:74px;height:40px;position:relative;overflow:hidden}.speedmark:before{content:"";position:absolute;width:86px;height:18px;left:-10px;top:14px;background:var(--ba-red);transform:skewX(-24deg);border-radius:3px 16px 16px 3px}.speedmark span{position:absolute;width:64px;height:10px;left:16px;top:8px;background:var(--ink);transform:skewX(-24deg);border-radius:10px}.brand-main{font-weight:850;font-size:clamp(1.35rem,5vw,2rem);letter-spacing:-.03em}.brand-sub{color:var(--muted);font-size:.93rem;margin-top:2px}.panel,.card{border:1px solid var(--line);background:var(--panel);box-shadow:var(--shadow);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-radius:22px}.input-panel{padding:16px;display:grid;gap:14px}.field{display:grid;gap:7px}.field span,.check-row span,.label{font-size:.82rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;font-weight:850}.field em{color:var(--ba-pampas);font-style:normal;text-transform:none;letter-spacing:0;font-weight:650}input{width:100%;border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.98);color:#07152d;border-radius:16px;padding:16px;font-size:1.35rem;font-weight:750;outline:none}input:focus{border-color:var(--ba-red);box-shadow:0 0 0 4px rgba(235,34,38,.22)}small{color:rgba(248,251,255,.74);line-height:1.35}.check-row{display:flex;align-items:center;gap:12px;padding:12px;border-radius:16px;background:var(--panel-strong)}.check-row input{width:28px;height:28px;accent-color:var(--ba-red)}.button-row{display:grid;grid-template-columns:1fr auto;gap:10px}button{border:0;border-radius:16px;padding:15px 18px;font-size:1.05rem;font-weight:850;color:white;background:linear-gradient(135deg,var(--ba-blue),var(--ba-red));box-shadow:0 10px 25px rgba(0,0,0,.3)}button.secondary{background:rgba(255,255,255,.14);color:var(--ink);box-shadow:none;border:1px solid rgba(255,255,255,.2)}.status{min-height:26px;color:#d9ffdf;font-weight:750}.has-error .status{color:#ffd8d8}.results{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}.card{padding:16px;min-height:132px}.primary-card{display:flex;flex-direction:column}.card strong{display:block;font-size:clamp(2rem,11vw,4.5rem);line-height:.95;letter-spacing:-.07em;margin-top:16px}.wide{grid-column:1/-1;min-height:auto}.wide strong{font-size:clamp(1.8rem,8vw,3.4rem)}p{margin:10px 0 0;color:rgba(248,251,255,.78);line-height:1.4}.countdown{margin-top:8px;font-size:clamp(1.7rem,7vw,3.2rem);font-weight:900;letter-spacing:-.05em;color:#fff}.engine{border-color:rgba(235,34,38,.55);background:linear-gradient(135deg,rgba(235,34,38,.18),rgba(7,90,170,.14))}footer{color:rgba(248,251,255,.62);font-size:.78rem;line-height:1.45;padding:18px 4px 0}[hidden]{display:none!important}@media(prefers-color-scheme:light){body{color:#07152d;background:linear-gradient(145deg,#f7faff,var(--ba-pampas))}.panel,.card{background:rgba(255,255,255,.85);border-color:rgba(1,41,92,.14)}.field span,.check-row span,.label{color:var(--ba-midnight)}.brand-sub,p,small,footer{color:rgba(1,41,92,.7)}.countdown{color:var(--ba-red)}.status{color:#0a6d25}.has-error .status{color:#b00020}.check-row{background:rgba(1,41,92,.06)}button.secondary{color:var(--ba-midnight);background:rgba(1,41,92,.08);border-color:rgba(1,41,92,.16)}}
+
+/* UTC EFB additions */
+.utc-clock-panel {
+  border: 1px solid rgba(255,255,255,.22);
+  background: linear-gradient(135deg, rgba(235,34,38,.18), rgba(7,90,170,.28));
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-radius: 22px;
+  padding: 16px;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+}
+.utc-clock-panel strong {
+  display: block;
+  font-size: clamp(2.2rem, 13vw, 5.1rem);
+  line-height: .9;
+  letter-spacing: -.08em;
+  margin-top: 8px;
+}
+.utc-date { color: rgba(248,251,255,.74); font-weight: 700; text-align: right; }
+.button-row { grid-template-columns: 1fr auto auto; }
+.countdown-card { min-height: 154px; position: relative; overflow: hidden; }
+.countdown-card:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: .16;
+  pointer-events: none;
+}
+.countdown-card.green:before { background: linear-gradient(135deg, #22c55e, transparent); }
+.countdown-card.amber:before { background: linear-gradient(135deg, #f59e0b, transparent); }
+.big-countdown {
+  position: relative;
+  font-size: clamp(2.6rem, 14vw, 5.4rem);
+  line-height: .95;
+  font-weight: 950;
+  letter-spacing: -.08em;
+  margin: 14px 0 6px;
+  font-variant-numeric: tabular-nums;
+}
+.countdown-card.soon { border-color: rgba(245,158,11,.72); }
+.countdown-card.due-now { border-color: rgba(34,197,94,.85); box-shadow: 0 0 0 3px rgba(34,197,94,.24), var(--shadow); }
+.countdown-card.overdue { border-color: rgba(235,34,38,.95); box-shadow: 0 0 0 3px rgba(235,34,38,.24), var(--shadow); }
+.countdown-card.overdue:before { background: linear-gradient(135deg, #eb2226, transparent); opacity: .24; }
+.countdown-card.overdue .big-countdown { color: #ffd6d6; }
+@media (max-width: 520px) {
+  .button-row { grid-template-columns: 1fr; }
+  .utc-clock-panel { align-items: flex-start; flex-direction: column; }
+  .utc-date { text-align: left; }
+}
+@media (prefers-color-scheme: light) {
+  .utc-clock-panel { background: rgba(255,255,255,.88); border-color: rgba(1,41,92,.14); }
+  .utc-date { color: rgba(1,41,92,.7); }
+  .countdown-card.overdue .big-countdown { color: #b00020; }
+}
