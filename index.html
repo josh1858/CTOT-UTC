@@ -35,7 +35,7 @@
   <label class="field"><span>TSAT (UTC) <em>optional</em></span><input id="tsat" inputmode="numeric" autocomplete="off" placeholder="e.g. 1410"><small>If entered, earliest pushback cannot be before TSAT.</small></label>
   <label class="field"><span>Taxi time</span><input id="taxi" inputmode="numeric" autocomplete="off" placeholder="e.g. 18"><small>Minutes from pushback/off-blocks to takeoff.</small></label>
   <label class="check-row"><input id="singleEngineTaxi" type="checkbox"><span>Single Engine Taxi</span></label>
-  <label class="field" id="expectedPushRow" hidden><span>Expected pushback (UTC) <em>optional</em></span><input id="expectedPush" inputmode="numeric" autocomplete="off" placeholder="e.g. 1412"><small>Used to calculate latest engine start from expected takeoff. Leave blank to use latest CTOT takeoff.</small></label>
+  <label class="field" id="expectedPushRow" hidden><span>Expected pushback (UTC) <em>optional</em></span><input id="expectedPush" inputmode="numeric" autocomplete="off" placeholder="e.g. 1412"><small>Optional note only — engine timing is always based on earliest allowable takeoff.</small></label>
   <div class="button-row"><button id="calculate" type="button">Calculate</button><button id="actualPushNow" type="button" class="secondary">NOW: Actual Push</button><button id="reset" type="button" class="secondary">Reset</button></div>
   <div id="status" class="status" role="status" aria-live="polite">Ready · all times UTC</div>
 </section>
@@ -49,7 +49,7 @@
   <article class="card wide engine" id="engineCard" hidden><span class="label">Latest engine start (UTC)</span><strong id="engineStart">--:--</strong><p id="engineBasis">Tick Single Engine Taxi to show engine timing.</p></article>
 </section>
 
-<footer>UTC-only mode. CTOT window: takeoff from CTOT −5 to CTOT +10. If TSAT is entered, earliest pushback is the later of TSAT or CTOT-based earliest pushback. Engine warm-up: 5 min before takeoff. Verify with SOP, ATC and aircraft limitations.</footer>
+<footer>UTC-only mode. CTOT window: takeoff from CTOT −5 to CTOT +10. If TSAT is entered, earliest pushback is the later of TSAT or CTOT-based earliest pushback. Engine warm-up: 5 min before earliest allowable takeoff. Verify with SOP, ATC and aircraft limitations.</footer>
 </main>
 <script src="app.js" defer></script>
 </body>

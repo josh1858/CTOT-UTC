@@ -1,19 +1,15 @@
-CTOT Pushback UTC PWA test report
+CTOT Pushback UTC EFB PWA test report
 
 Result: ALL_TESTS_PASS
 
 Covered:
 - UTC clock formatting
-- HHMM parsing
-- HH:MM parsing
-- HH.MM parsing
-- UTC/Zulu output formatting
-- CTOT earliest pushback calculation
-- CTOT latest pushback calculation
-- TSAT constraint handling
-- Midnight rollover handling
-- Single Engine Taxi latest engine start with expected pushback
-- Single Engine Taxi latest engine start without expected pushback
-- Countdown uses UTC minutes, not local time
-- Actual Calculate button updates output fields
-- Actual Push NOW button records current UTC time
+- HHMM / HH:MM / HH.MM parsing
+- UTC/Zulu formatting and midnight rollover
+- CTOT earliest/latest pushback calculations
+- Optional TSAT constraint for earliest pushback
+- Latest engine start based on earliest allowable takeoff minus 5 minutes
+- Countdown to earliest pushback using UTC device time
+- Countdown to latest engine start using UTC device time
+- Calculate button updates output fields
+- NOW: Actual Push uses UTC time

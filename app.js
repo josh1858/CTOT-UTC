@@ -115,15 +115,14 @@
     };
 
     if (singleEngineTaxi) {
-      const expectedRaw = String(expectedPushText || '').trim();
-      if (expectedRaw) {
-        const expected = parseTime(expectedRaw, 'Expected pushback');
-        if (!expected.ok) return { ok: false, error: expected.error };
-        const expectedTakeoff = expected.minutes + taxi.minutes;
-        result.engine = { mode: 'expectedPushback', expectedPushback: expected.minutes, expectedTakeoff, latestEngineStart: expectedTakeoff - CONFIG.ENGINE_WARMUP_MIN };
-      } else {
-        result.engine = { mode: 'latestAllowedTakeoff', latestEngineStart: latestDeparture - CONFIG.ENGINE_WARMUP_MIN };
-      }
+      // Engine warm-up timing is deliberately anchored to the EARLIEST allowable
+      // takeoff time, not expected pushback and not the latest CTOT tolerance.
+      // CTOT 1430 => earliest takeoff 1425 => latest engine start 1420.
+      result.engine = {
+        mode: 'earliestTakeoffWindow',
+        earliestTakeoff: earliestDeparture,
+        latestEngineStart: earliestDeparture - CONFIG.ENGINE_WARMUP_MIN
+      };
     }
 
     return result;
@@ -242,9 +241,7 @@
 
     if (singleEngineTaxi && result.engine) {
       setText('engineStart', formatTime(result.engine.latestEngineStart));
-      setText('engineBasis', result.engine.mode === 'expectedPushback'
-        ? `Based on expected pushback ${formatTime(result.engine.expectedPushback)} + ${result.taxiMinutes} min taxi, expected takeoff ${formatTime(result.engine.expectedTakeoff)}. Engine must be running 5 min before takeoff.`
-        : `No expected pushback entered. Based on latest allowed takeoff ${formatTime(result.latestDeparture)}. Engine must be running 5 min before takeoff.`);
+      setText('engineBasis', `Based on earliest allowable takeoff ${formatTime(result.earliestDeparture)}. Engine must be running 5 min before earliest takeoff, so latest engine start is ${formatTime(result.engine.latestEngineStart)}.`);
     }
 
     renderActualPushSummary();

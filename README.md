@@ -24,7 +24,7 @@ All entered and displayed times are UTC/Zulu:
 - Permanent live UTC clock.
 - Optional TSAT constraint.
 - Earliest pushback countdown.
-- Latest engine start countdown.
+- Latest engine start countdown based on earliest allowable takeoff.
 - Single Engine Taxi mode.
 - NOW: Actual Push button.
 - Countdown warning states at 10, 5, 2, 1 and 0 minutes.
@@ -36,7 +36,7 @@ All entered and displayed times are UTC/Zulu:
 - CTOT-only earliest pushback = CTOT - 5 min - taxi time
 - Latest pushback = CTOT + 10 min - taxi time
 - If TSAT is entered, earliest pushback = later of TSAT or CTOT-only earliest pushback
-- Latest engine start = expected takeoff - 5 min if expected pushback is entered; otherwise latest allowed takeoff - 5 min
+- Latest engine start = earliest allowable takeoff - 5 min
 
 ## Test status
 Automated test result: ALL_TESTS_PASS
